@@ -11,7 +11,10 @@ setup(
   author_email='rob@hinst.net',
   license='MIT',
   packages=find_packages(),
-  package_data={'sonar': ['config/default.yaml', 'config/dev/env.yaml.dist']},
+  data_files = [
+    ('config', ['config/default.yaml']),
+    ('config/dev', ['config/dev/env.yaml.dist']),
+  ],
   install_requires=[
     'redis==3.5.3',
     'himl==0.7.0',
