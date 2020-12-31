@@ -19,11 +19,7 @@ sonar.device.initialize(config["device"]["name"], config["device"]["options"])
 while cycle([True]):
     try:
         measurement = sonar.device.get_distance()
-        message = {
-            "type": "measurement",
-            "data": measurement
-        }
-        redis.publish("subsystem.sonar", dumps(message))
+        redis.publish("subsystem.sonar.measurement", measurement)
         sleep(0.25)
     finally:
         pubsub.close()
