@@ -6,15 +6,18 @@ from typing import Dict
 from redis import Redis
 
 from sonar.config import load_config
+from sonar.logging import logger, initialize_logger
 import sonar.device
 
 
 def main():
     environment: str = os.getenv("ENVIRONMENT", "dev")
     config: Dict = load_config(environment)
-    redis_client: Redis = Redis(
-        host=config["redis"]["host"], port=int(config["redis"]["port"])
-    )
+    initialize_logger(config["logging"]["level"], config["logging"]["filename"])
+    redis_host = config["redis"]["host"]
+    redis_port = config["redis"]["port"]
+    logger.debug(f"Connecting to redis at {redis_host}:{redis_port}")
+    redis_client: Redis = Redis(host=redis_host, port=redis_port)
 
     sonar.device.initialize(config["device"]["name"], config["device"]["options"])
     while cycle([True]):

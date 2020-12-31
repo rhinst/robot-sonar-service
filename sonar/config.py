@@ -5,7 +5,9 @@ import os.path
 
 
 def get_config_path(env: str) -> str:
-    return os.path.abspath(os.path.dirname(os.path.abspath(__file__)) + f"/../config/{env}")
+    return os.path.abspath(
+        os.path.dirname(os.path.abspath(__file__)) + f"/../config/{env}"
+    )
 
 
 def load_config(env: str = "dev") -> Dict:
