@@ -3,8 +3,8 @@ Description=Robot Sonar Service
 
 [Service]
 Type=simple
-WorkingDirectory=/robot/systems/sonar
-ExecStart=/usr/bin/python -m sonar
+WorkingDirectory=/robot/sonar
+ExecStart=/robot/sonar/venv/bin/sonar
 
 [Install]
 WantedBy=multi-user.target
