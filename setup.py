@@ -11,7 +11,8 @@ setup(
   author_email='rob@hinst.net',
   license='MIT',
   packages=find_packages(),
-  install_requires = [
+  package_data={'sonar': ['config/default.yaml', 'config/dev/env.yaml.dist']},
+  install_requires=[
     'redis==3.5.3',
     'himl==0.7.0',
     'RPi.GPIO==0.7.0' if platform.platform().lower().find("armv71") > -1 else 'Mock.GPIO==0.1.7',
