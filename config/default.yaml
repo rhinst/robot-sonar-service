@@ -1,0 +1,12 @@
+logging:
+  level: "INFO"
+  filename: ""
+redis:
+  host: ""
+  port: 6379
+device:
+  name: "HC-SRO4"
+  options:
+    trigger_pin: 11
+    echo_pin: 13
+
