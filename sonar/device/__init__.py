@@ -8,16 +8,11 @@ _active_module = None
 
 get_distance: callable
 cleanup: callable
-drive: callable
-turn: callable
-turn_left: callable
-turn_right: callable
-stop: callable
 
 
 def initialize(device_name: str, device_options: Dict):
     global _active_module
-    methods = ["get_distance", "cleanup", "drive", "turn", "turn_left", "turn_right", "stop"]
+    methods = ["get_distance", "cleanup"]
     module_name = modules[device_name]
     _active_module = import_module(f"sonar.device.{module_name}")
     getattr(_active_module, "initialize")(device_options)
