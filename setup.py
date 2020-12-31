@@ -1,4 +1,4 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 import platform
 
 
@@ -10,7 +10,7 @@ setup(
   author='Rob Hinst',
   author_email='rob@hinst.net',
   license='MIT',
-  packages=['sonar'],
+  packages=find_packages(),
   install_requires = [
     'redis==3.5.3',
     'himl==0.7.0',
@@ -19,6 +19,6 @@ setup(
   test_suite='tests',
   tests_require=['pytest==6.2.1'],
   entry_points={
-    'console_scripts': ['sonar=sonar']
+    'console_scripts': ['sonar=sonar.__main__:main']
   }
 )
