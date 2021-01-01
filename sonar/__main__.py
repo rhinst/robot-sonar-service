@@ -20,14 +20,14 @@ def main():
     redis_client: Redis = Redis(host=redis_host, port=redis_port)
 
     sonar.device.initialize(config["device"]["name"], config["device"]["options"])
-    while cycle([True]):
-        try:
+    try:
+        while cycle([True]):
             measurement = sonar.device.get_distance()
             redis_client.publish("subsystem.sonar.measurement", measurement)
             sleep(0.25)
-        finally:
-            redis_client.close()
-            sonar.device.cleanup()
+    finally:
+        redis_client.close()
+        sonar.device.cleanup()
 
 
 if __name__ == "__main__":
