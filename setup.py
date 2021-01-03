@@ -11,7 +11,7 @@ setup(
   author_email='rob@hinst.net',
   license='MIT',
   packages=find_packages(),
-  data_files = [
+  data_files=[
     ('config', ['config/default.yaml']),
     ('config/dev', ['config/dev/env.yaml.dist']),
   ],
