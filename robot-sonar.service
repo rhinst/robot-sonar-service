@@ -1,5 +1,6 @@
 [Unit]
 Description=Robot Sonar Service
+After=redis-server.service
 
 [Service]
 Type=simple
